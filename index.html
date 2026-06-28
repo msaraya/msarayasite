@@ -1,92 +1,357 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohamed Saraya</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Mohamed Saraya is a Presales Technical Engineer in Berlin, combining 15+ years of cloud and reliability engineering with practical AI expertise.">
+    <meta name="theme-color" content="#07130f">
+    <title>Mohamed Saraya — Presales Technical Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #10251d;
+            --muted: #607269;
+            --paper: #f6f4ed;
+            --card: rgba(255, 255, 255, .64);
+            --line: rgba(16, 37, 29, .13);
+            --accent: #ff6846;
+            --green: #0b6b4e;
+            --lime: #c8ee76;
+            --radius: 24px;
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            color: var(--ink);
+            background:
+                radial-gradient(circle at 84% 10%, rgba(200, 238, 118, .32), transparent 24rem),
+                radial-gradient(circle at 5% 50%, rgba(255, 104, 70, .09), transparent 27rem),
+                var(--paper);
+            font: 16px/1.65 "DM Sans", sans-serif;
+        }
+
+        a { color: inherit; }
+        .wrap { width: min(1120px, calc(100% - 40px)); margin-inline: auto; }
+        .eyebrow {
+            margin: 0 0 18px;
+            color: var(--green);
+            font-size: .76rem;
+            font-weight: 700;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 86px;
+        }
+        .logo {
+            font: 800 1.05rem/1 "Manrope", sans-serif;
+            letter-spacing: -.04em;
+            text-decoration: none;
+        }
+        .logo span { color: var(--accent); }
+        .nav-links { display: flex; align-items: center; gap: 28px; }
+        .nav-links a { color: var(--muted); font-size: .9rem; font-weight: 600; text-decoration: none; }
+        .nav-links a:hover { color: var(--ink); }
+        .nav-links .contact-link { color: var(--ink); border-bottom: 2px solid var(--accent); }
+
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1.25fr) minmax(300px, .75fr);
+            gap: 72px;
+            align-items: center;
+            min-height: calc(100vh - 86px);
+            padding: 80px 0 110px;
+        }
+        h1, h2, h3 { font-family: "Manrope", sans-serif; }
+        h1 {
+            max-width: 810px;
+            margin: 0;
+            font-size: clamp(3rem, 7.2vw, 6.4rem);
+            line-height: .98;
+            letter-spacing: -.07em;
+        }
+        h1 em { color: var(--green); font-style: normal; }
+        .intro {
+            max-width: 670px;
+            margin: 30px 0 0;
+            color: #40564c;
+            font-size: clamp(1.08rem, 1.6vw, 1.3rem);
+        }
+        .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 38px; }
+        .button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px 20px;
+            border: 1px solid var(--ink);
+            border-radius: 999px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform .2s, background .2s, color .2s;
+        }
+        .button:hover { transform: translateY(-2px); }
+        .button.primary { color: #fff; background: var(--ink); }
+        .button.primary:hover { background: var(--green); border-color: var(--green); }
+
+        .signal {
+            position: relative;
+            aspect-ratio: 1;
+            display: grid;
+            place-items: center;
+        }
+        .orbit, .orbit::before, .orbit::after {
+            position: absolute;
+            border: 1px solid rgba(11, 107, 78, .28);
+            border-radius: 50%;
+            content: "";
+        }
+        .orbit { inset: 3%; animation: spin 22s linear infinite; }
+        .orbit::before { inset: 17%; border-color: rgba(255, 104, 70, .38); }
+        .orbit::after { inset: 35%; background: var(--lime); border: 0; }
+        .dot { position: absolute; width: 13px; height: 13px; border-radius: 50%; background: var(--accent); }
+        .dot.one { top: 11%; left: 22%; }
+        .dot.two { right: 7%; bottom: 32%; width: 8px; height: 8px; background: var(--green); }
+        .signal-card {
+            z-index: 1;
+            width: 58%;
+            padding: 27px;
+            background: rgba(255,255,255,.76);
+            border: 1px solid rgba(255,255,255,.9);
+            border-radius: 22px;
+            box-shadow: 0 24px 70px rgba(16,37,29,.12);
+            backdrop-filter: blur(14px);
+        }
+        .signal-card strong { display: block; font: 800 2.25rem/1 "Manrope"; letter-spacing: -.05em; }
+        .signal-card span { display: block; margin-top: 8px; color: var(--muted); font-size: .86rem; line-height: 1.45; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        section { padding: 110px 0; border-top: 1px solid var(--line); }
+        .section-head { display: grid; grid-template-columns: .6fr 1.4fr; gap: 40px; margin-bottom: 48px; }
+        h2 { max-width: 780px; margin: 0; font-size: clamp(2rem, 4.4vw, 4rem); line-height: 1.08; letter-spacing: -.055em; }
+
+        .value-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .value-card {
+            min-height: 260px;
+            padding: 30px;
+            background: var(--card);
+            border: 1px solid rgba(255,255,255,.8);
+            border-radius: var(--radius);
+            box-shadow: 0 14px 45px rgba(16,37,29,.05);
+        }
+        .number { color: var(--accent); font: 700 .78rem "Manrope"; letter-spacing: .12em; }
+        h3 { margin: 54px 0 12px; font-size: 1.35rem; letter-spacing: -.03em; }
+        .value-card p { margin: 0; color: var(--muted); }
+
+        .ai-panel {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            padding: 58px;
+            color: #f2f5ed;
+            background: #081b15;
+            border-radius: 32px;
+            overflow: hidden;
+            position: relative;
+        }
+        .ai-panel::after {
+            position: absolute;
+            right: -90px;
+            bottom: -140px;
+            width: 340px;
+            height: 340px;
+            background: var(--green);
+            border-radius: 50%;
+            filter: blur(10px);
+            opacity: .28;
+            content: "";
+        }
+        .ai-panel .eyebrow { color: var(--lime); }
+        .ai-panel h2 { font-size: clamp(2.2rem, 4vw, 3.8rem); }
+        .ai-copy { position: relative; z-index: 1; color: #b8c6bf; font-size: 1.05rem; }
+        .ai-copy p { margin-top: 0; }
+        .chips { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 28px; }
+        .chip { padding: 8px 13px; border: 1px solid rgba(200,238,118,.3); border-radius: 999px; color: #e4f6bd; font-size: .82rem; }
+        .study { margin-top: 28px !important; padding-left: 15px; border-left: 2px solid var(--accent); color: #f2f5ed; }
+
+        .proof-grid { display: grid; grid-template-columns: .65fr 1.35fr; gap: 72px; }
+        .stat strong { display: block; font: 800 clamp(4rem, 8vw, 7rem)/.9 "Manrope"; letter-spacing: -.08em; color: var(--green); }
+        .stat span { display: block; max-width: 220px; margin-top: 18px; color: var(--muted); }
+        .timeline { display: grid; gap: 0; }
+        .role {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 24px;
+            padding: 0 0 30px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--line);
+        }
+        .role:last-child { margin-bottom: 0; }
+        .role time { color: var(--muted); font-size: .86rem; }
+        .role h3 { margin: 0 0 5px; font-size: 1.15rem; }
+        .role p { margin: 0; color: var(--muted); }
+
+        footer { padding: 72px 0 42px; color: #eef4ee; background: var(--ink); }
+        .footer-main { display: flex; align-items: end; justify-content: space-between; gap: 32px; }
+        footer h2 { max-width: 680px; font-size: clamp(2.2rem, 5vw, 4.8rem); }
+        footer h2 span { color: var(--lime); }
+        .socials { display: flex; gap: 18px; flex-wrap: wrap; }
+        .socials a { color: #c4d0ca; font-weight: 600; text-decoration: none; }
+        .socials a:hover { color: var(--lime); }
+        .copyright { margin: 58px 0 0; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.12); color: #8fa198; font-size: .82rem; }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .orbit { animation: none; }
+            .button { transition: none; }
+        }
+        @media (max-width: 800px) {
+            .nav-links a:not(.contact-link) { display: none; }
+            .hero { grid-template-columns: 1fr; gap: 24px; padding: 64px 0 88px; }
+            .signal { width: min(360px, 90%); margin: 0 auto; }
+            .section-head, .ai-panel, .proof-grid { grid-template-columns: 1fr; gap: 32px; }
+            .value-grid { grid-template-columns: 1fr; }
+            .value-card { min-height: 220px; }
+            .ai-panel { padding: 38px 26px; }
+            .footer-main { align-items: start; flex-direction: column; }
+        }
+        @media (max-width: 520px) {
+            .wrap { width: min(100% - 28px, 1120px); }
+            section { padding: 78px 0; }
+            .role { grid-template-columns: 1fr; gap: 6px; }
+            .signal-card { width: 65%; padding: 20px; }
+        }
+    </style>
 </head>
 <body>
+    <nav class="wrap" aria-label="Main navigation">
+        <a class="logo" href="#top">MS<span>.</span></a>
+        <div class="nav-links">
+            <a href="#approach">Approach</a>
+            <a href="#ai">AI</a>
+            <a href="#experience">Experience</a>
+            <a class="contact-link" href="mailto:info@msaraya.com">Let’s talk</a>
+        </div>
+    </nav>
 
-<!-- Header Section -->
-<header>
-    <h1>Hi <img src="https://user-images.githubusercontent.com/18350557/176309783-0785949b-9127-417c-8b55-ab5a4333674e.gif" alt="Hi GIF"> My name is Mohamed Saraya</h1>
-</header>
+    <main id="top">
+        <header class="hero wrap">
+            <div>
+                <p class="eyebrow">Presales Technical Engineer · Berlin</p>
+                <h1>Turning complex needs into <em>clear solutions.</em></h1>
+                <p class="intro">I’m Mohamed Saraya. I combine customer-focused solution design with 15+ years of hands-on experience across cloud, platform reliability, automation, and distributed systems—now extended into practical AI engineering.</p>
+                <div class="actions">
+                    <a class="button primary" href="mailto:info@msaraya.com">Start a conversation <span aria-hidden="true">↗</span></a>
+                    <a class="button" href="https://www.linkedin.com/in/msaraya" target="_blank" rel="noreferrer">LinkedIn</a>
+                </div>
+            </div>
+            <div class="signal" aria-hidden="true">
+                <div class="orbit"><span class="dot one"></span><span class="dot two"></span></div>
+                <div class="signal-card"><strong>15+</strong><span>years connecting technology, operations, and business outcomes</span></div>
+            </div>
+        </header>
 
-<!-- Senior Site Reliability Engineer Section -->
-<section>
-    <h2>Senior Site Reliability Engineer</h2>
-    <ul>
-        <li>🌍 I'm based in Berlin, Germany</li>
-        <li>🖥️ See my portfolio at <a href="http://www.msaraya.com" target="_blank">msaraya.com</a> 🖥️ See my blog at <a href="https://blog.msaraya.com/" target="_blank">https://blog.msaraya.com/</a></li>
-        <li>✉️ You can contact me at <a href="mailto:info@msaraya.com">info@msaraya.com</a></li>
-    </ul>
-</section>
+        <section id="approach">
+            <div class="wrap">
+                <div class="section-head">
+                    <p class="eyebrow">How I create value</p>
+                    <h2>Credible in the room. Practical in the architecture.</h2>
+                </div>
+                <div class="value-grid">
+                    <article class="value-card">
+                        <span class="number">01 / DISCOVER</span>
+                        <h3>Find the real requirement</h3>
+                        <p>I translate stakeholder goals, constraints, and risk into a technical problem worth solving.</p>
+                    </article>
+                    <article class="value-card">
+                        <span class="number">02 / DESIGN</span>
+                        <h3>Make complexity understandable</h3>
+                        <p>I shape cloud and AI solutions around reliability, security, scalability, and cost—not novelty.</p>
+                    </article>
+                    <article class="value-card">
+                        <span class="number">03 / ENABLE</span>
+                        <h3>Build confidence to move</h3>
+                        <p>I bring engineering depth to workshops, evaluations, proofs of concept, and technical decisions.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
 
-<!-- Skills Section -->
-<section>
-    <h2>Skills</h2>
-    <p align="left">
-        <a href="https://git-scm.com/" target="_blank" rel="noreferrer">
-            <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/git-colored.svg" width="36" height="36" alt="Git">
-        </a>
-        <a href="https://go.dev/doc/" target="_blank" rel="noreferrer">
-            <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/go-colored.svg" width="36" height="36" alt="Go">
-        </a>
-        <a href="https://www.php.net/" target="_blank" rel="noreferrer">
-            <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/php-colored.svg" width="36" height="36" alt="PHP">
-        </a>
-        <a href="https://www.python.org/" target="_blank" rel="noreferrer">
-            <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/python-colored.svg" width="36" height="36" alt="Python">
-        </a>
-        <a href="https://www.mysql.com/" target="_blank" rel="noreferrer">
-            <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/mysql-colored.svg" width="36" height="36" alt="MySQL">
-        </a>
-        <a href="https://www.mongodb.com/" target="_blank" rel="noreferrer">
-            <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/mongodb-colored.svg" width="36" height="36" alt="MongoDB">
-        </a>
-        <a href="https://www.postgresql.org/" target="_blank" rel="noreferrer">
-            <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/postgresql-colored.svg" width="36" height="36" alt="PostgreSQL">
-        </a>
-        <a href="https://flask.palletsprojects.com/en/2.0.x/" target="_blank" rel="noreferrer">
-            <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/flask-colored.svg" width="36" height="36" alt="Flask">
-        </a>
-        <a href="https://aws.amazon.com" target="_blank" rel="noreferrer">
-            <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/aws-colored.svg" width="36" height="36" alt="Amazon Web Services">
-        </a>
-        <a href="https://www.docker.com/" target="_blank" rel="noreferrer">
-            <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/docker-colored.svg" width="36" height="36" alt="Docker">
-        </a>
-        <a href="https://www.linux.org" target="_blank" rel="noreferrer">
-            <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/linux-colored.svg" width="36" height="36" alt="Linux">
-        </a>
-        <a href="https://cloud.google.com/" target="_blank" rel="noreferrer">
-            <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/googlecloud-colored.svg" width="36" height="36" alt="Google Cloud">
-        </a>
-    </p>
-</section>
+        <section id="ai">
+            <div class="wrap ai-panel">
+                <div>
+                    <p class="eyebrow">AI, grounded in engineering</p>
+                    <h2>From promising demo to dependable system.</h2>
+                </div>
+                <div class="ai-copy">
+                    <p>My AI work builds on a production-engineering foundation. I understand both the intelligence layer and what it takes to operate the surrounding platform safely and reliably.</p>
+                    <div class="chips" aria-label="AI capabilities">
+                        <span class="chip">OpenAI API</span>
+                        <span class="chip">Gemini</span>
+                        <span class="chip">RAG</span>
+                        <span class="chip">AI Agents</span>
+                        <span class="chip">MCP</span>
+                        <span class="chip">Prompt Engineering</span>
+                        <span class="chip">Python</span>
+                        <span class="chip">Vector Databases</span>
+                    </div>
+                    <p class="study">Currently completing a 1,200-hour Professional Diploma in AI Engineering at Masterschool Institute of Technology, Berlin.</p>
+                </div>
+            </div>
+        </section>
 
-<!-- Socials Section -->
-<section>
-    <h2>Socials</h2>
-    <p align="left">
-        <a href="https://www.github.com/msaraya" target="_blank" rel="noreferrer">
-            <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/github.svg" width="32" height="32" alt="GitHub">
-        </a>
-        <a href="https://www.linkedin.com/in/msaraya" target="_blank" rel="noreferrer">
-            <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/linkedin.svg" width="32" height="32" alt="LinkedIn">
-        </a>
-        <a href="http://www.medium.com/msaraya" target="_blank" rel="noreferrer">
-            <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/medium.svg" width="32" height="32" alt="Medium">
-        </a>
-        <!-- Add other social links here -->
-        <a href="https://www.x.com/msaraya001" target="_blank" rel="noreferrer">
-            <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/twitter.svg" width="32" height="32" alt="Twitter">
-        </a>
-        <a href="https://www.youtube.com/@mohamedsaraya" target="_blank" rel="noreferrer">
-            <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/youtube.svg" width="32" height="32" alt="YouTube">
-        </a>
-    </p>
-</section>
+        <section id="experience">
+            <div class="wrap">
+                <div class="section-head">
+                    <p class="eyebrow">Experience that travels</p>
+                    <h2>Built across clouds, industries, and every layer of the stack.</h2>
+                </div>
+                <div class="proof-grid">
+                    <div class="stat"><strong>3</strong><span>continents of professional experience, from Cairo and Riyadh to Kuwait and Berlin</span></div>
+                    <div class="timeline">
+                        <article class="role">
+                            <time>2025</time>
+                            <div><h3>Senior DevOps Engineer · Tradebyte</h3><p>AWS platform reliability, Aurora migration, observability, infrastructure automation, and cost optimization.</p></div>
+                        </article>
+                        <article class="role">
+                            <time>2022—2024</time>
+                            <div><h3>Senior SRE · HomeToGo</h3><p>Kubernetes modernization, SRE adoption, zero-trust evaluation, and incident management.</p></div>
+                        </article>
+                        <article class="role">
+                            <time>2020—2022</time>
+                            <div><h3>Senior SRE · CrossEngage</h3><p>Reliable SaaS platforms across Kubernetes, distributed data systems, and hybrid cloud.</p></div>
+                        </article>
+                        <article class="role">
+                            <time>2007—2020</time>
+                            <div><h3>Systems, architecture & infrastructure</h3><p>Private cloud, e-commerce, big data, Linux, databases, virtualization, and enterprise solution design.</p></div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
+    <footer>
+        <div class="wrap">
+            <div class="footer-main">
+                <h2>Have a hard technical problem? <span>Let’s make it clear.</span></h2>
+                <div class="socials">
+                    <a href="mailto:info@msaraya.com">Email</a>
+                    <a href="https://www.linkedin.com/in/msaraya" target="_blank" rel="noreferrer">LinkedIn</a>
+                    <a href="https://github.com/msaraya" target="_blank" rel="noreferrer">GitHub</a>
+                    <a href="https://blog.msaraya.com" target="_blank" rel="noreferrer">Blog</a>
+                </div>
+            </div>
+            <p class="copyright">© <span id="year"></span> Mohamed Saraya · Berlin, Germany</p>
+        </div>
+    </footer>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
